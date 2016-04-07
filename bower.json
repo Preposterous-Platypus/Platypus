@@ -1,0 +1,19 @@
+{
+  "name": "Preposterous-Platypus",
+  "homepage": "https://github.com/Preposterous-Platypus/Preposterous-Platypus",
+  "authors": [
+    "Reid <jreid.greer@gmail.com>"
+  ],
+  "description": "Greenfield Project for Hack Reactor.",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "All rights reserved.",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "client/lib"
+  ]
+}
