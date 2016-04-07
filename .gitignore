@@ -1,3 +1,5 @@
 node_modules
 .DS_Store
 client/lib
+client/config/yelp.js
+client/config/postmates.js
