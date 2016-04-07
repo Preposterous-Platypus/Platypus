@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Arun Vasudevan
+  - __Scrum Master__: Reid Greer
+  - __Development Team Members__: Claire Hsu, Kim Curran
 
 ## Table of Contents
 
