@@ -1,0 +1,19 @@
+{
+  "name": "preposterous-platypus",
+  "version": "1.0.0",
+  "description": "Greenfield project for Hack Reactor 41.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Preposterous-Platypus/Preposterous-Platypus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Preposterous-Platypus/Preposterous-Platypus/issues"
+  },
+  "homepage": "https://github.com/Preposterous-Platypus/Preposterous-Platypus#readme"
+}
