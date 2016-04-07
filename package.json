@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Preposterous-Platypus/Preposterous-Platypus/issues"
   },
-  "homepage": "https://github.com/Preposterous-Platypus/Preposterous-Platypus#readme"
+  "homepage": "https://github.com/Preposterous-Platypus/Preposterous-Platypus#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
