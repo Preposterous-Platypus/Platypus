@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Preposterous-Platypus/Preposterous-Platypus#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "mongoose": "^4.4.11"
   }
 }
