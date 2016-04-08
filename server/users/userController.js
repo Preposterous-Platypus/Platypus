@@ -28,6 +28,12 @@ module.exports = {
   },
 
   removeOne: function(req, res) {
-
+    var query = { _id: req.params.id };
+    User.findOneAndRemove(query, function(err, data) {
+      if (err) {
+        return res.json(err);
+      }
+      res.json(data);
+    });
   },
 };
