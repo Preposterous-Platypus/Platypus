@@ -11,4 +11,23 @@ module.exports = {
       res.json(data);
     });
   },
+
+  updateOne: function(req, res) {
+    var query = { _id: req.params.id };
+    var updatedProps = req.body;
+    var options = {
+      new: true,
+      upsert: true
+    };
+    User.findOneAndUpdate(query, updatedProps, options, function(err, data) {
+      if (err) {
+        return res.json(err);
+      }
+      res.json(data);
+    });
+  },
+
+  removeOne: function(req, res) {
+
+  },
 };
