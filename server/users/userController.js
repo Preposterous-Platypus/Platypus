@@ -36,4 +36,14 @@ module.exports = {
       res.json(data);
     });
   },
+
+  retrieveOne: function(req, res) {
+    var query = { _id: req.params.id };
+    User.findOne(query, function(err, data) {
+      if (err) {
+        return res.json(err);
+      }
+      res.json(data);
+    });
+  },
 };
