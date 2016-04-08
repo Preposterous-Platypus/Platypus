@@ -5,8 +5,12 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
     required: true
+  },
+  gitHubHandle: {
+    unique: true,
+    type: String,
+    required: true,
   },
   email: String,
   image: String
