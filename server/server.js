@@ -1,5 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var GitHubStrategy = require('passport-github').Strategy;
 
 var app = express();
 
@@ -18,5 +20,45 @@ app.listen(port, function(err) {
   console.log('Platypus is listening on ' + port);
 });  
 
-//export our app for testing and flexibility, required by index.js
-module.exports = app;
+passport.use(new GitHubStrategy({
+  clientID: '',
+  clientSecret: '',
+  callbackURL: ''
+}, function(accessToken, refreshToken, profile, callback) {
+  var newUser = new User({'github': profile.username});
+  newUser
+    .fetch()
+    .then(function(found) {
+      if (found) {
+      	callback(null, found);
+      } else {
+      	newUser.set('avatar', profile.photos[0].value);
+      	newUser.save()
+      	.then(function() {
+      	  callback(null, newUser);
+      	});
+      }
+    })
+}));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.get('id'));
+});
+
+passport.deserializeUser(function(id, done) {
+  new User({'id': id})
+    .fetch()
+    .then(function(found) {
+      if(!found) {
+      	done(null, 'User Not Found');
+      } else {
+      	done(null, found);
+      }
+    });
+});
+
+app.use(passport.initialize());
+
+
+
+
