@@ -1,12 +1,12 @@
 angular.module('preposterous-platypus', [
   'ngRoute',
-  'platypus-homepage'
+  'platypus-auth'
   ])
 
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: 'app/homepage/homepage.html',
-      controller: 'HomepageController'
+      templateUrl: 'app/auth/signin.html',
+      controller: 'AuthController'
     })
 });
