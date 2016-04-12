@@ -126,10 +126,7 @@ angular.module('platypus.services', [])
     return $http({
       method: 'POST',
       url: '/api/likes',    
-      data: {
-        restaurant: data.restaurantID,
-        user: data.userID
-      }
+      data: data
     })
     .then(function(resp) {
       console.log('POST request was successful!');
@@ -141,9 +138,7 @@ angular.module('platypus.services', [])
   return $http({
     method: 'DELETE',
     url: '/api/likes',    
-    data: {
-      _id: data.likesID
-    }
+    data: data
   })
   .then(function(resp) {
     console.log('POST request was successful!');
