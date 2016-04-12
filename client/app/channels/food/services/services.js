@@ -122,13 +122,13 @@ angular.module('platypus.services', [])
     });
   };
 //join create may need to be reimplemented
-  var addOne = function(restaurantID, userID) {
+  var addOne = function(data) {
     return $http({
       method: 'POST',
       url: '/api/likes',    
       data: {
-        restaurant: restaurantID,
-        user: userID
+        restaurant: data.restaurantID,
+        user: data.userID
       }
     })
     .then(function(resp) {
@@ -137,12 +137,12 @@ angular.module('platypus.services', [])
     });
   };
 
-  var removeOne = function(likesID) {
+  var removeOne = function(data) {
   return $http({
-    method: 'POST',
+    method: 'DELETE',
     url: '/api/likes',    
     data: {
-      _id: likesID
+      _id: data.likesID
     }
   })
   .then(function(resp) {
