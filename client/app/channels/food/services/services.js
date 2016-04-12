@@ -121,7 +121,7 @@ angular.module('platypus.services', [])
       return resp.data;
     });
   };
-
+//join create may need to be reimplemented
   var addOne = function(restaurantID, userID) {
     return $http({
       method: 'POST',
