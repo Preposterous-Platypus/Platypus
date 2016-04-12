@@ -57,13 +57,13 @@ module.exports = {
     });
   },
 
-  deleteAll: function(req, res) {
+  removeAll: function(req, res) {
     var query = req.query;
     User.find(query, function(err, data) {
       if (err) {
         return res.json(err);
       }
-      User.remove(query, function(err) {
+      User.remove(query, function(err, data) {
         if (err) {
           return res.json(err);
         }
