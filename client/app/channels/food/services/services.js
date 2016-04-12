@@ -11,7 +11,7 @@ angular.module('platypus.services', [])
       return resp.data;
     });
   };
-
+//Do we need an updateOne or updateLikes function as well?
   var addOne = function(name, yelpID, distance, image_url, likes) {
     return $http({
       method: 'POST',
