@@ -9,5 +9,6 @@ var likesSchema = new mongoose.Schema({
   }
 });
 
-var Likes = mongoose.model('Likes', LikesSchema);
+var Likes = mongoose.model('Likes', likesSchema);
+
 module.exports = Likes;
