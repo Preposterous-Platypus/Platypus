@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var likedSchema = new mongoose.Schema({
+var likesSchema = new mongoose.Schema({
   restaurant: {
     type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant'
   },
@@ -8,3 +8,5 @@ var likedSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId, ref: 'User'
   }
 });
+
+module.exports = likesSchema;
