@@ -4,8 +4,7 @@ var userController = require('../users/userController.js');
 
 userRouter.route('/')
                .post(userController.createOne)
-               .get(userController.retrieveAll)
-               .delete(userController.removeAll);
+               .get(userController.retrieveAll);
 
 userRouter.route('/:id')
                .get(userController.retrieveOne)

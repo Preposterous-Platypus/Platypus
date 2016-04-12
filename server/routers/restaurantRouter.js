@@ -4,8 +4,7 @@ var restaurantController = require('../restaurants/restaurantController.js');
 
 restaurantRouter.route('/')
                .post(restaurantController.createOne)
-               .get(restaurantController.retrieveAll)
-               .delete(restaurantController.removeAll);
+               .get(restaurantController.retrieveAll);
 
 restaurantRouter.route('/:id')
                .get(restaurantController.retrieveOne)
