@@ -12,9 +12,9 @@ require('./config/middleware.js')(app, express);
 // require('./config/routes.js')(app, express);
 
 
-app.use('/api/restaurants', restaurantRouter);
-app.use('/api/users', userRouter);
-app.use('/api/likes', likesRouter);
+// app.use('/api/restaurants', restaurantRouter);
+// app.use('/api/users', userRouter);
+// app.use('/api/likes', likesRouter);
 
 app.listen(port, function(err) {
   if (err) {
