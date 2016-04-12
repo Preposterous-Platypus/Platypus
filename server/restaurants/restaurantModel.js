@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 // Flesh out our User schema and register the model with Mongoose
 
-var RestaurantSchema = new mongoose.Schema({
+var restaurantSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,

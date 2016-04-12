@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="preposterous-platypus">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Preposterous Platypus</title>
+
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+  </head>
+  <body>
+  <div ng-view></div>
+
+    <!-- Dependancies Here -->
+    <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular-route/angular-route.min.js"></script>
+    <script src="https://use.typekit.net/kmu3osn.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    
+    <!-- Support Modules Here -->
+    <script src="/app/homepage/homepage.js"></script>
+
+    <!-- Main App Module Here -->
+    <script src="/app/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+body {
+  background: #1ca8ff;
+}
+
+.homepage-logo {
+  font-size: 4em;
+  color: #FFFFFF;
+  font-family:'fatfrank', sans-serif;
+  margin-bottom: 1.5em
+}
+
+.icon-homepage {
+  width: 97px;
+  height: 97px;
+  background: url('../assets/icon.png') no-repeat;
+  background-size:contain;
+  margin: auto;
+}
+
+.link-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 8em;
+}
+
+.github-link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.github-link .github-link-container {
+  display: inline-block;
+  width: 12em;
+  margin: 0;
+  padding-left: 2em;
+  background: #FFFFFF;
+  color: #1ca8ff;
+  font-size: 2em;
+  background-image: url('../assets/GitHubIcon.png');
+  background-size: 1.7em;
+  background-position: left center;
+  background-repeat: no-repeat;
+  border-left: .2em solid #FFFFFF;
+}
+
+.github-link:hover .github-link-container {
+  background: #1ca8ff;
+  background-image: url('../assets/GitHubIcon_hover.png');
+  background-size: 1.7em;
+  background-position: left center;
+  background-repeat: no-repeat;
+  border-left: .2em solid #1ca8ff;
+  color: #FFFFFF;
+}
+
+.github-link .github-text {
+  width: 10em;
+  display: inline-block;
+  border-left: .1em solid #1ca8ff;
+  padding: 10px 0 10px 10px;
+  height: 100%;
+}
+
+.github-link:hover .github-text {
+  border-left: .1em solid #FFFFFF;
+}

@@ -11,7 +11,11 @@ mongoose.connect('mongodb://localhost/platypus');
 
 //configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
-require('./config/routes.js')(app, express);
+// require('./config/routes.js')(app, express);
+
+
+app.use('/api/restaurants', restaurantRouter);
+app.use('/api/users', userRouter);
 
 app.listen(port, function(err) {
   if (err) {
