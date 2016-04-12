@@ -55,20 +55,5 @@ module.exports = {
       }
       res.json(data);
     });
-  },
-
-  deleteAll: function(req, res) {
-    var query = req.query;
-    User.find(query, function(err, data) {
-      if (err) {
-        return res.json(err);
-      }
-      User.remove(query, function(err) {
-        if (err) {
-          return res.json(err);
-        }
-        res.json(data);
-      });
-    });
   }
 };

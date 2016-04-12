@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 // Flesh out our User schema and register the model with Mongoose
 
-var UserSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
