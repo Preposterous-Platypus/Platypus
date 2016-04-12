@@ -11,7 +11,7 @@ angular.module('platypus.services', [])
       return resp.data;
     });
   };
-
+//Do we need an updateOne or updateLikes function as well?
   var addOne = function(name, yelpID, distance, image_url, likes) {
     return $http({
       method: 'POST',
@@ -31,7 +31,7 @@ angular.module('platypus.services', [])
   };
   return {
     getAll: getAll,
-    addOne: addOne,
+    addOne: addOne
   };
 })
 
@@ -65,7 +65,7 @@ angular.module('platypus.services', [])
   };
   return {
     getAll: getAll,
-    createOne: createOne,
+    createOne: createOne
   };
 })
 
@@ -106,6 +106,48 @@ angular.module('platypus.services', [])
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout,
+    signout: signout
   };
 });
+
+.factory('Likes', function ($http) {
+  var getAll = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/likes',
+    })
+    .then(function(resp) {
+      console.log('GET request was successful!');
+      return resp.data;
+    });
+  };
+//join create may need to be reimplemented
+  var addOne = function(data) {
+    return $http({
+      method: 'POST',
+      url: '/api/likes',    
+      data: data
+    })
+    .then(function(resp) {
+      console.log('POST request was successful!');
+      return resp;
+    });
+  };
+
+  var removeOne = function(data) {
+  return $http({
+    method: 'DELETE',
+    url: '/api/likes',    
+    data: data
+  })
+  .then(function(resp) {
+    console.log('POST request was successful!');
+    return resp;
+  });
+};
+  return {
+    getAll: getAll,
+    addOne: addOne,
+    removeOne: removeOne
+  };
+})
