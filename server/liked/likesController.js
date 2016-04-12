@@ -1,9 +1,9 @@
-var Liked = require('../likedModel.js');
+var Likes = require('../likesModel.js');
 
 module.exports = {
-  createOne: function(req, res) {
-  var newLiked = req.body;
-  Liked.create(newLiked, function(err, response) {
+  addOne: function(req, res) {
+  var newLikes = req.body;
+  Likes.create(newLikes, function(err, response) {
     if (err) {
       return res.json(err);
     }
@@ -13,7 +13,7 @@ module.exports = {
 
 retrieve: function(req, res) {
   var query = req.query;
-  Liked.find(query, function(err, response) {
+  Likes.find(query, function(err, response) {
     if (err) {
       return res.json(err);
     }
@@ -23,7 +23,7 @@ retrieve: function(req, res) {
 
 retrieveOne: function(req, res) {
   var query = {_id: req.params.id};
-  Liked.findOne(query, function(err, response) {
+  Likes.findOne(query, function(err, response) {
     if (err) {
       return res.json(err);
     }
@@ -33,11 +33,11 @@ retrieveOne: function(req, res) {
 
 delete: function(req, res) {
   var query = req.query;
-  Liked.find(query, function(err, response) {
+  Likes.find(query, function(err, response) {
     if (err) {
       return res.json(err);
     }
-    Liked.remove(query, function(err) {
+    Likes.remove(query, function(err) {
       if (err) {
         return res.json(err);
       }
@@ -48,7 +48,7 @@ delete: function(req, res) {
 
 deleteOne: function(req, res) {
   var query = {_id: req.params.id};
-  Liked.findOneAndRemove(query, function(err, response) {
+  Likes.findOneAndRemove(query, function(err, response) {
     if (err) {
       return res.json(err);
     }
