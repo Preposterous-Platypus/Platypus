@@ -1,7 +1,8 @@
+var jwt = require('jwt-simple');
 var User = require('./userModel.js');
 
 module.exports = {
-  //all methods - createOne, delete, removeOne
+  //all methods - createOne, delete, removeOne, signIn, signUp, checkAuth
   createOne: function(req, res) {
     var newUser = req.body;
     User.create(newUser, function(err, data) {
@@ -55,5 +56,17 @@ module.exports = {
       }
       res.json(data);
     });
+  },
+
+  signin: function (req, res, next) {
+    //signIn code here
+  },
+
+  signup: function (req, res, next) {
+    //signUp code here
+  },
+
+  checkAuth: function (req, res, next) {
+    //checkAuth code here
   }
 };
