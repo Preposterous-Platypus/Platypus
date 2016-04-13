@@ -9,7 +9,16 @@ var restaurantSchema = new mongoose.Schema({
     required: true
   },
   yelpID: String,
-  distance: String,
+  url: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  eat24_url: {
+    type: String,
+    unique: true,
+    required: false
+  },
   image_url: String,
   likes: Number
 });
