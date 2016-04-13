@@ -1,7 +1,8 @@
-angular.module('preposterous-platypus', [
+angular.module('platypus', [
   'ngRoute',
   'platypus.auth',
-  'platypus.services'
+  'platypus.services',
+  'platypus.food-feed'
   ])
 
 .config(function ($routeProvider, $httpProvider) {
@@ -16,7 +17,7 @@ angular.module('preposterous-platypus', [
     })
     .when('/feed', {
       templateUrl: 'app/channels/food/feed/feed.html',
-      controller: 'FeedController'
+      controller: 'FoodFeedController'
     })
     .when('/user/dashboard', {
       templateUrl: 'app/user/dashboard.html',
