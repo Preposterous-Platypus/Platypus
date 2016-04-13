@@ -15,7 +15,7 @@ angular.module('preposterous-platypus', [
       controller: 'AddController'
     })
     .when('/feed', {
-      templateUrl: 'app/feed/feed.html',
+      templateUrl: 'app/channels/food/feed/feed.html',
       controller: 'FeedController'
     })
     .when('/user/dashboard', {
