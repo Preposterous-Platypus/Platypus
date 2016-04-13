@@ -77,7 +77,7 @@ describe('Likes Controller', function () {
   });
 
 //not so sure about this test, as retrieveOne makes us of req.params.id
-//should we use 'populate' to obtain the id?
+//should we use findOne to obtain the id?
 //   it('should have a method that returns a like', function (done) {
 //   likesController.retrieveOne({restaurant:5}, function(likes) {
 //     expect(likes.restaurant).to.equal(5);
@@ -86,7 +86,7 @@ describe('Likes Controller', function () {
 // });
 
 //not so sure about this test, as removeOne makes us of req.params.id
-//should we use 'populate' to obtain the id?
+//should we use findOne to obtain the id?
   // it('should have a method that removes a like', function (done) {
   //   likesController.removeOne({restaurant:5}, function(likes) {
   //     expect(Likes.retrieveOne(5)).to.equal(undefined);
