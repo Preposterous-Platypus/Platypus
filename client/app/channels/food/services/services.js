@@ -11,18 +11,12 @@ angular.module('platypus.services', [])
       return resp.data;
     });
   };
-//Do we need an updateOne or updateLikes function as well?
-  var addOne = function(name, yelpID, distance, image_url, likes) {
+
+  var addOne = function(data) {
     return $http({
       method: 'POST',
       url: '/api/restaurants',    
-      data: {
-        url: name,
-        yelpID: yelpID,
-        distance: distance,
-        image_url: image_url,
-        likes: likes
-      }
+      data: data
     })
     .then(function(resp) {
       console.log('POST request was successful!');
@@ -47,16 +41,11 @@ angular.module('platypus.services', [])
     });
   };
 
-  var createOne = function(type, gitHub, email, image) {
+  var createOne = function(data) {
     return $http({
       method: 'POST',
       url: '/api/users',    
-      data: {
-        type: type,
-        gitHub: gitHub,
-        email: email,
-        image: image
-      }
+      data: data
     })
     .then(function(resp) {
       console.log('POST request was successful!');
@@ -108,7 +97,7 @@ angular.module('platypus.services', [])
     isAuth: isAuth,
     signout: signout
   };
-});
+})
 
 .factory('Likes', function ($http) {
   var getAll = function() {
@@ -121,6 +110,7 @@ angular.module('platypus.services', [])
       return resp.data;
     });
   };
+
 //join create may need to be reimplemented
   var addOne = function(data) {
     return $http({
@@ -135,19 +125,19 @@ angular.module('platypus.services', [])
   };
 
   var removeOne = function(data) {
-  return $http({
-    method: 'DELETE',
-    url: '/api/likes',    
-    data: data
-  })
-  .then(function(resp) {
-    console.log('POST request was successful!');
-    return resp;
-  });
-};
+    return $http({
+      method: 'DELETE',
+      url: '/api/likes',    
+      data: data
+    })
+    .then(function(resp) {
+      console.log('POST request was successful!');
+      return resp;
+    });
+  };
   return {
     getAll: getAll,
     addOne: addOne,
     removeOne: removeOne
   };
-})
+});
