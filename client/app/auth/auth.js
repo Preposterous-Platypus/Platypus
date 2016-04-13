@@ -1,4 +1,4 @@
-angular.module('platypus-auth', [])
+angular.module('platypus.auth', [])
 .controller('AuthController', function($scope){
   //
 });
