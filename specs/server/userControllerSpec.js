@@ -122,6 +122,62 @@ describe('User Controller', function() {
 
   //retrieveAll
   it('should return all users in the database', function(done) {
-    
+    var users = [
+      {
+        name: 'Magee',
+        gitHubHandle: 'magee',
+        email: 'magee@magee.com',
+        image: ''
+      },
+      {
+        name: 'Dan',
+        gitHubHandle: 'dan',
+        email: 'dan@dan.com',
+        image: ''
+      },
+      {
+        name: 'Beth',
+        gitHubHandle: 'beth',
+        email: 'beth@beth.com',
+        image: ''
+      },
+      {
+        name: 'Sunny',
+        gitHubHandle: 'sunny',
+        email: 'sunny@sunny.com',
+        image: ''
+      },
+      {
+        name: 'Zach',
+        gitHubHandle: 'zach',
+        email: 'zach@zach.com',
+        image: ''
+      }
+    ];
+
+    userController.retrieveAll(function(results) {
+      var newResults = [];
+
+      results.forEach(function(result) {
+        newResults.push({
+          name: result.name,
+          gitHubHandle: result.gitHubHandle,
+          email: result.email,
+          image: result.image
+        });
+      });
+
+      expect(newResults).to.eql(users);
+      done();
+    });
   });
+
+  //signin
+  assert.isFunction(signin);
+
+  //signup
+  assert.isFunction(signup);
+
+  //checkAuth
+  assert.isFunction(checkAuth);
 });
