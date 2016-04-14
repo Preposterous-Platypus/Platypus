@@ -1,4 +1,4 @@
-angular.module('platypus.food-feed', [])
+angular.module('platypus.food-feed', ['platypus.services'])
 .controller('FoodFeedController', function($scope) {
   
   $scope.data = {};
