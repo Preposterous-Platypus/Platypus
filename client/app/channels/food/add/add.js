@@ -1,5 +1,5 @@
 angular.module('platypus.food-add', ['platypus.services'])
- .controller('FoodAddController', function($scope, YelpApi, Restaurants){
+ .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes){
 
   $scope.data = {};
 
