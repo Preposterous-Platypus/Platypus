@@ -4,7 +4,7 @@ angular.module('platypus.food-add', ['platypus.services'])
   $scope.data = {};
 
   $scope.restaurant = {};
-  $scope.like = {}
+  $scope.like = {};
   //created a YelpApi factory to use here
   	YelpApi.retrieveYelp()
   	.then(function(restaurants){
