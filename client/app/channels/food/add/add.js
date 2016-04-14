@@ -11,4 +11,4 @@ angular.module('platypus.food-add', ['platypus.services'])
   		console.error(error);
   	});
    
- }); 
+ });
