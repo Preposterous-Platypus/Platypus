@@ -1,4 +1,5 @@
 var jwt = require('jwt-simple');
+var passport = require('passport');
 var User = require('./userModel.js');
 
 module.exports = {
@@ -59,10 +60,38 @@ module.exports = {
   },
 
   signin: function (req, res, next) {
-    //signIn code here
+    var email = req.body.email;
+    var password = req.body.password;
+    var name = req.body.name;
+
+    User.findOne({email: email}, function(err, user) {
+      if (!user) {
+        console.log('User does not exist ', err));
+        var newUser = new User({
+          email: email,
+          name: name,
+          password: password
+        }).save();
+        next(newUser);
+      } else {
+        next(user);
+      }
+    });
   },
 
   checkAuth: function (req, res, next) {
-    //checkAuth code here
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token'));
+    } else {
+      var user = jwt.decode(token);
+      User.findOne({email: email}, function(err, foundUser) {
+        if (foundUser) {
+          res.send(200);
+        } else {
+          res.send(401);
+        }
+      });
+    }
   }
 };

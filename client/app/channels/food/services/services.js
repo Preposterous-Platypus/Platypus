@@ -1,4 +1,4 @@
-angular.module('platypus.services', [])
+angular.module('platypus.foodServices', [])
 
 //referenced: https://www.snip2code.com/Snippet/372987/Yelp-API-Headers-w--Angular
 .factory('YelpApi', ['$http',
