@@ -1,6 +1,7 @@
 angular.module('platypus', [
   'ngRoute',
   'platypus.auth',
+  'platypus.user',
   'platypus.services',
   'platypus.food-feed'
   ])
