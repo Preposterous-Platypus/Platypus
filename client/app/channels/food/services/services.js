@@ -48,7 +48,7 @@ angular.module('platypus.services', [])
 
       } // end function
 
-    ]); // end factory
+    ]) // end factory
 
 .factory('Restaurants', function ($http) {
   var getAll = function() {
@@ -100,7 +100,7 @@ angular.module('platypus.services', [])
 
   return {
     getAll: getAll,
-    addOne: addOne,,
+    addOne: addOne,
     removeOne: removeOne,
     updateLikes: updateLikes
   };
