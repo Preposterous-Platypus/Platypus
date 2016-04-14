@@ -1,4 +1,5 @@
 var Restaurant = require('./RestaurantModel.js');
+var Likes = require('../Likes/LikesModel.js');
 
 module.exports = {
   //all methods - find, findOne, addOne, delete, deleteOne
@@ -19,11 +20,32 @@ module.exports = {
       new: true,
       upsert: true
     };
-    User.findOneAndUpdate(query, updatedProps, options, function(err, data) {
+    Restaurant.findOneAndUpdate(query, updatedProps, options, function(err, data) {
       if (err) {
         return res.json(err);
       }
       res.json(data);
+    });
+  },
+
+  updateLikes: function(req, res) {
+    var query = { _id: req.params.id };
+    //reference for count http://mongoosejs.com/docs/api.html
+    Likes.query.count({restaurant: req.params.id}, function(err, data){
+      if(err){
+        return res.json(err);
+      }
+      var updatedProps = {likes: data};
+      var options = {
+        new: true,
+        upsert: true
+      };
+      Restaurant.findOneAndUpdate(query, updatedProps, options, function(err, data) {
+        if (err) {
+          return res.json(err);
+        }
+        res.json(data);
+      });    
     });
   },
 

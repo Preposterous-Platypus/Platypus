@@ -20,7 +20,8 @@ var restaurantSchema = new mongoose.Schema({
     required: false
   },
   image_url: String,
-  likes: Number
+  likes: Number,
+  categories: [{type: String}]
 });
 
 var Restaurant = mongoose.model('Restaurant', restaurantSchema);
