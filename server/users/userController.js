@@ -62,10 +62,6 @@ module.exports = {
     //signIn code here
   },
 
-  signup: function (req, res, next) {
-    //signUp code here
-  },
-
   checkAuth: function (req, res, next) {
     //checkAuth code here
   }
