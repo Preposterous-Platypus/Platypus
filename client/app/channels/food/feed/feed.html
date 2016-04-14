@@ -1,22 +1,5 @@
 <div class="container">
-<div class="row">
-<div class="col-lg-6 col-md-6 col-sm-8 col-xs-8">
-  <h1 class="feed-logo">Platypus</h1>
-  </div>
-  <div class="col-lg-6 col-md-6 col-sm-4 col-xs-4">
-  <div class="dropdown"> 
-    <a type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="menu-dropdown">
-    <span class="glyphicon glyphicon-menu-hamburger"></span>
-    </a>
-    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dLabel">
-      <li><a href="/food/feed"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-      <li><a href="/dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-      <li><a href="/food/addRestaurant"><span class="glyphicon glyphicon-plus"></span> Add Restaurant </a></li>
-      <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-    </ul>
-  </div>
-  </div>
-</div>
+<div ng-include="'app/partials/nav.html'"></div>
 
 <div class="row feed-filter">
 <div class="col-md-1 text-hide">&nbsp;</div>
