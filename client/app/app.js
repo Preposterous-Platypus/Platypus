@@ -11,11 +11,11 @@ angular.module('platypus', [
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
-    .when('/add', {
+    .when('/food/add', {
       templateUrl: 'app/add/add.html',
       controller: 'AddController'
     })
-    .when('/feed', {
+    .when('/food/feed', {
       templateUrl: 'app/channels/food/feed/feed.html',
       controller: 'FoodFeedController'
     })
@@ -28,6 +28,6 @@ angular.module('platypus', [
       controller: 'UserController'
     })
     .otherwise({
-      redirectTo: 'app/auth/signin.html'
+      redirectTo: '/user/dashboard'
     });
 });
