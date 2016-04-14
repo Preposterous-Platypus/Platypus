@@ -1,5 +1,6 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 
@@ -11,7 +12,7 @@ mongoose.connect('mongodb://localhost/platypus');
 
 //configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
-// require('./config/routes.js')(app, express);
+require('./config/routes.js')(app, express);
 
 
 // app.use('/api/restaurants', restaurantRouter);
@@ -24,6 +25,11 @@ app.listen(port, function(err) {
   }
   console.log('Platypus is listening on ' + port);
 });  
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(session({secret: 'asdf'}));
 
 passport.use(new GitHubStrategy({
   clientID: '4cc724b73df7e764536f',
@@ -52,17 +58,5 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  new User({'id': id})
-    .fetch()
-    .then(function(found) {
-      if(!found) {
-      	done(null, 'User Not Found');
-      } else {
-      	done(null, found);
-      }
-    });
+  done(null, id);
 });
-
-app.use(passport.initialize());
-
-

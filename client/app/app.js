@@ -3,7 +3,8 @@ angular.module('platypus', [
   'platypus.auth',
   'platypus.user',
   'platypus.services',
-  'platypus.food-feed'
+  'platypus.food-feed',
+  'platypus.foodServices'
   ])
 
 .config(function ($routeProvider, $httpProvider) {

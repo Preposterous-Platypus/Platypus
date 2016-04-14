@@ -60,11 +60,23 @@ module.exports = {
   },
 
   signin: function (req, res, next) {
-<<<<<<< 8360e1996bfe8d74e3d95fdb783153c8d1fcaa20
-    //signIn code here
-=======
-    
->>>>>>> work on using passport for github
+    var email = req.body.email;
+    var password = req.body.password;
+    var name = req.body.name;
+
+    User.findOne({email: email}, function(err, user) {
+      if (!user) {
+        console.log('User does not exist ', err));
+        var newUser = new User({
+          email: email,
+          name: name,
+          password: password
+        }).save();
+        next(newUser);
+      } else {
+        next(user);
+      }
+    });
   },
 
   checkAuth: function (req, res, next) {
@@ -81,5 +93,5 @@ module.exports = {
         }
       });
     }
-  // }
+  }
 };
