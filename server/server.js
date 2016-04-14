@@ -26,10 +26,11 @@ app.listen(port, function(err) {
 });  
 
 passport.use(new GitHubStrategy({
-  clientID: '',
-  clientSecret: '',
-  callbackURL: ''
+  clientID: '4cc724b73df7e764536f',
+  clientSecret: 'dad7b3b87f7478e53ed79186e41ef7aea161ba15',
+  callbackURL: 'http://localhost:8000/auth/github/callback'
 }, function(accessToken, refreshToken, profile, callback) {
+  console.log(accessToken, refreshToken);
   var newUser = new User({'github': profile.username});
   newUser
     .fetch()
@@ -63,7 +64,5 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.use(passport.initialize());
-
-
 
 

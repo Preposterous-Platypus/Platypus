@@ -1,4 +1,5 @@
 var jwt = require('jwt-simple');
+var passport = require('passport');
 var User = require('./userModel.js');
 
 module.exports = {
@@ -59,10 +60,26 @@ module.exports = {
   },
 
   signin: function (req, res, next) {
+<<<<<<< 8360e1996bfe8d74e3d95fdb783153c8d1fcaa20
     //signIn code here
+=======
+    
+>>>>>>> work on using passport for github
   },
 
   checkAuth: function (req, res, next) {
-    //checkAuth code here
-  }
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token'));
+    } else {
+      var user = jwt.decode(token);
+      User.findOne({email: email}, function(err, foundUser) {
+        if (foundUser) {
+          res.send(200);
+        } else {
+          res.send(401);
+        }
+      });
+    }
+  // }
 };
