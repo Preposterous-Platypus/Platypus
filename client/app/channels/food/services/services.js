@@ -1,5 +1,6 @@
 angular.module('platypus.services', [])
 
+//referenced: https://www.snip2code.com/Snippet/372987/Yelp-API-Headers-w--Angular
 .factory('YelpApi', ['$http',
       function ($http) {
 //not sure about how to store secret variables in config, didn't Arun already set that up? now there is a cute message from Reid...
@@ -72,9 +73,36 @@ angular.module('platypus.services', [])
       return resp;
     });
   };
+
+  var removeOne = function(data) {
+    return $http({
+      method: 'DELETE',
+      url: '/api/restaurants',    
+      data: data
+    })
+    .then(function(resp) {
+      console.log('DELETE request was successful!');
+      return resp;
+    });
+  };
+
+  var updateLikes = function(data) {
+    return $http({
+      method: 'PUT',
+      url: '/api/restaurants',    
+      data: data
+    })
+    .then(function(resp) {
+      console.log('PUT request was successful!');
+      return resp;
+    });
+  };
+
   return {
     getAll: getAll,
-    addOne: addOne
+    addOne: addOne,,
+    removeOne: removeOne,
+    updateLikes: updateLikes
   };
 })
 
