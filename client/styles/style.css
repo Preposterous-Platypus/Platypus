@@ -2,11 +2,54 @@ body {
   background: #1ca8ff;
 }
 
+.hide-overflow {
+  overflow: hidden;
+}
+
 .homepage-logo {
   font-size: 4em;
   color: #FFFFFF;
   font-family:'fatfrank', sans-serif;
   margin-bottom: 1.5em
+}
+
+.feed-logo {
+  font-size: 4em; 
+  font-family:'fatfrank', sans-serif;
+  color: #FFFFFF;
+  padding-left: 102px;
+  background: url('../assets/icon.png') no-repeat left center;
+  background-size: contain;
+}
+
+
+
+.dropdown {
+  float: right;
+  margin-top: 2em;
+}
+
+.menu-dropdown {
+  cursor: pointer;
+  font-size: 2em;
+  color: #1ca8ff;
+  background: #FFFFFF;
+  padding: .3em;
+  border-radius: 3px;
+}
+@media (max-width: 768px) {
+  .feed-logo {
+    font-size: 2em;
+    padding-left: 38px;
+  }
+
+  .dropdown {
+    margin-top: 1.5em;
+  }
+
+  .menu-dropdown {
+    font-size: 1.5em;
+  }
 }
 
 .icon-homepage {
@@ -63,4 +106,33 @@ body {
 
 .github-link:hover .github-text {
   border-left: .1em solid #FFFFFF;
+}
+
+/* Feed Styling */
+.feed-filter {
+  margin: 2em 0 2em 0;
+}
+
+.feed-filter .control-label {
+  color: #FFFFFF;
+  font-size: 2em;
+}
+
+.sort-container {
+  line-height: 3em;
+}
+
+.caption {
+  overflow: hidden;
+}
+
+.caption .thumbnail-title {
+  font-weight: 800;
+  text-align: left;
+  height: 100%;
+  line-height: 100%;
+}
+
+.caption .btn {
+  float: right;
 }

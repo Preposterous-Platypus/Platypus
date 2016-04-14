@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="preposterous-platypus">
+<html lang="en" ng-app="platypus">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Preposterous Platypus</title>
+    <title>Platypus</title>
 
     <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
@@ -14,6 +14,10 @@
   <div ng-view></div>
 
     <!-- Dependancies Here -->
+    <!-- Required for DropDown Functionality -->
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/dropdown.js"></script>
+
     <script src="/lib/angular/angular.min.js"></script>
     <script src="/lib/angular-route/angular-route.min.js"></script>
     <script src="https://use.typekit.net/kmu3osn.js"></script>
@@ -21,6 +25,8 @@
     
     <!-- Support Modules Here -->
     <script src="/app/auth/auth.js"></script>
+    <script src="/app/channels/food/feed/feed.js"></script>
+    <script src="/app/channels/food/services/services.js"></script>
 
     <!-- Main App Module Here -->
     <script src="/app/app.js"></script>
