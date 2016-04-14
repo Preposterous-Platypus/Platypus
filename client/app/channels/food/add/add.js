@@ -1,11 +1,12 @@
 angular.module('platypus.food-add', ['platypus.services'])
- .controller('FoodAddController', function($scope, Restaurants){
+ .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes){
 
   $scope.data = {};
 
   $scope.restaurant = {};
-  //we probably want to create a new restaurant service that fetches data from the yelp api, to use here
-  	Restaurants.getAll()
+  $scope.like = {};
+  //created a YelpApi factory to use here
+  	YelpApi.retrieveYelp()
   	.then(function(restaurants){
   		$scope.data.restaurants = restaurants;
 
@@ -15,4 +16,10 @@ angular.module('platypus.food-add', ['platypus.services'])
 
     //add a restaurant
     Restaurants.addOne($scope.restaurant);
+
+    //add a like
+    Likes.addOne($scope.like);
+
+    //remove a like
+    Likes.removeOne($scope.like);
  });
