@@ -10,6 +10,7 @@ angular.module('platypus.food-add', ['platypus.services'])
   //   console.log($scope.name);
   // };
     $scope.search = function(){
+                $scope.data.restaurants = {};
         YelpApi.retrieveYelp($scope.name, function(restaurants){
           $scope.data.restaurants = restaurants;
           console.log(restaurants);

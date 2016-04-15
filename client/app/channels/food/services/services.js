@@ -41,7 +41,7 @@ angular.module('platypus.foodServices', [])
           console.log("inside yelpapi factory");
           console.log(params.term);
           $http.jsonp(url, { params : params })
-            .success(callback);
+            .then(callback);
             console.log("inside end of yelpapi factory");
         }; // end retrieveYelp
 
