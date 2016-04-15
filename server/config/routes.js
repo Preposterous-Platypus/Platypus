@@ -6,6 +6,8 @@ module.exports = function (app, express) {
   //API endpoints for signIn, signUp, and checkAuth
   app.post('/api/users/signin', userController.signin);
   app.get('/api/users/signedin', userController.checkAuth);
+  app.post('/api/restaurants', restaurantController.addOne);
+  app.get('/api/restaurants', restaurantController.retrieveAll);
   app.get('/github/auth', passport.authenticate('github', { successRedirect: '/', failureRedirect: '/signin'}));
   app.get('/github/callback', passport.authenticate('github', { failureRedirect: '/signin'}),
   	function(req, res) {

@@ -34,8 +34,8 @@
          <img ng-src="{{restaurant.image_url}}" alt="...">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
-           <a href="#" class="btn btn-default" role="button">
-           <span class="glyphicon glyphicon-thumbs-up"></span></a>
+           
+           <span role="button" class="btn btn-default glyphicon glyphicon-thumbs-up" ng-click="addOne(restaurant)"></span>
          </div>
        </div>
        </div>

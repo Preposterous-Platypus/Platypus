@@ -3,13 +3,9 @@ angular.module('platypus.food-add', ['platypus.services'])
 
   $scope.data = {};
 
-  $scope.restaurant = {};
   $scope.like = {};
-  // created a YelpApi factory to use here
-  // $scope.printSomething  = function(){
-  //   console.log($scope.name);
-  // };
-    $scope.search = function(){
+
+  $scope.search = function(){
                 $scope.data.restaurants = {};
         YelpApi.retrieveYelp($scope.name, function(restaurants){
           $scope.data.restaurants = restaurants;
@@ -17,19 +13,18 @@ angular.module('platypus.food-add', ['platypus.services'])
           console.log($scope.data.restaurants.businesses);
           $scope.name = '';
         });
-
   };
-  	// YelpApi.retrieveYelp($scope.name, function(restaurants){
-  	// 	$scope.data.restaurants = restaurants;
-   //    console.log($scope.data.restaurants.businesses);
 
-  	// });
+  $scope.addOne = function(restaurant){
 
-    //add a restaurant
-    Restaurants.addOne($scope.restaurant);
-
+        //add a restaurant
+    Restaurants.addOne(restaurant);
+    console.log("adding ", restaurant);
     //add a like
-    Likes.addOne($scope.like);
+    // Likes.addOne($scope.like);
+  }
+
+
 
     //remove a like
     Likes.removeOne($scope.like);
