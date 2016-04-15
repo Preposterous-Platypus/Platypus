@@ -5,5 +5,5 @@ angular.module('platypus.auth', [])
 
   //}
 
-};
+});
 
