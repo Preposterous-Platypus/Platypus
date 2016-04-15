@@ -22,7 +22,9 @@
  
   <ul>
     <li data-ng-repeat="restaurant in data.restaurants">
-      {{restaurant.name}}
+      <span class="thumbnail-title">{{restaurant.name}}</span>
+           <a href="#" class="btn btn-default" role="button">
+           <span class="glyphicon glyphicon-thumbs-up"></span></a>
     </li>
   </ul>
 
