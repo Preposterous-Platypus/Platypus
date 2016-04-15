@@ -20,8 +20,6 @@ angular.module('platypus.food-add', ['platypus.services'])
         //add a restaurant
     Restaurants.addOne(restaurant);
     console.log("adding ", restaurant);
-    //add a like
-    // Likes.addOne($scope.like);
   }
 
  });
