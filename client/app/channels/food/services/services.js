@@ -38,8 +38,10 @@ angular.module('platypus.foodServices', [])
             ); 
             // end signature
           params['oauth_signature'] = signature;
+          console.log("inside yelpapi factory");
           $http.jsonp(url, { params : params })
             .success(callback);
+            console.log("inside end of yelpapi factory");
         }; // end retrieveYelp
 
         return {
