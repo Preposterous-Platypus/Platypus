@@ -23,7 +23,7 @@ angular.module('platypus.foodServices', [])
             oauth_signature_method:   'HMAC-SHA1',
             oauth_timestamp:          new Date().getTime(),
             oauth_nonce:              randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-            term:                     'food'
+            term:                     name || 'food'
           }; // end params
           var consumerSecret =        'igfK7uLT0q2o8buNgEUoWvGkcIU'; //Consumer Secret
           var tokenSecret =           '19rfxqDsWEfQ7k_QrVQUjEHWopw'; //Token Secret
@@ -39,6 +39,7 @@ angular.module('platypus.foodServices', [])
             // end signature
           params['oauth_signature'] = signature;
           console.log("inside yelpapi factory");
+          console.log(params.term);
           $http.jsonp(url, { params : params })
             .success(callback);
             console.log("inside end of yelpapi factory");
