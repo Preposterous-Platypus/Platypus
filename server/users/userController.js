@@ -66,7 +66,7 @@ module.exports = {
 
     User.findOne({email: email}, function(err, user) {
       if (!user) {
-        console.log('User does not exist ', err));
+        console.log('User does not exist ', err);
         var newUser = new User({
           email: email,
           name: name,

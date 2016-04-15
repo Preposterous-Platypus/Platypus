@@ -4,6 +4,7 @@ angular.module('platypus', [
   'platypus.user',
   'platypus.services',
   'platypus.food-feed',
+  'platypus.food-add',
   'platypus.foodServices'
   ])
 
@@ -14,8 +15,8 @@ angular.module('platypus', [
       controller: 'AuthController'
     })
     .when('/food/add', {
-      templateUrl: 'app/add/add.html',
-      controller: 'AddController'
+      templateUrl: 'app/channels/food/add/add.html',
+      controller: 'FoodAddController'
     })
     .when('/food/feed', {
       templateUrl: 'app/channels/food/feed/feed.html',

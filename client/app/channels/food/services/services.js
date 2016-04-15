@@ -1,6 +1,6 @@
 angular.module('platypus.foodServices', [])
-
-//referenced: https://www.snip2code.com/Snippet/372987/Yelp-API-Headers-w--Angular
+//oauth key and token from : https://groups.google.com/forum/#!topic/yelp-developer-support/vTysbj39j50
+//referenced: http://sfknol.blogspot.com/2015/06/angularjs-oauth-10.html, https://www.snip2code.com/Snippet/372987/Yelp-API-Headers-w--Angular
 .factory('YelpApi', ['$http',
       function ($http) {
 //not sure about how to store secret variables in config, didn't Arun already set that up? now there is a cute message from Reid...
@@ -17,16 +17,16 @@ angular.module('platypus.foodServices', [])
           var url =     'http://api.yelp.com/v2/search';
           var params = {
             callback:                 'angular.callbacks._0',
-            location:                 '30030',
-            oauth_consumer_key:       '', // consumer key
-            oauth_token:              '', //Token
+            location:                 'San+Francisco',
+            oauth_consumer_key:       'UVOv68GWWuYUEHgIOs2kbA', // consumer key
+            oauth_token:              'rGxuTEJtPFiQswZ3ai4up_qKrDBWPlQy', //Token
             oauth_signature_method:   'HMAC-SHA1',
             oauth_timestamp:          new Date().getTime(),
             oauth_nonce:              randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-            term:                     'food'
+            term:                     name || 'food'
           }; // end params
-          var consumerSecret =        ''; //Consumer Secret
-          var tokenSecret =           ''; //Token Secret
+          var consumerSecret =        'igfK7uLT0q2o8buNgEUoWvGkcIU'; //Consumer Secret
+          var tokenSecret =           '19rfxqDsWEfQ7k_QrVQUjEHWopw'; //Token Secret
           var signature = 
             oauthSignature.generate(
               method, 
@@ -38,8 +38,11 @@ angular.module('platypus.foodServices', [])
             ); 
             // end signature
           params['oauth_signature'] = signature;
+          console.log("inside yelpapi factory");
+          console.log(params.term);
           $http.jsonp(url, { params : params })
-            .success(callback);
+            .then(callback);
+            console.log("inside end of yelpapi factory");
         }; // end retrieveYelp
 
         return {

@@ -5,14 +5,25 @@ angular.module('platypus.food-add', ['platypus.services'])
 
   $scope.restaurant = {};
   $scope.like = {};
-  //created a YelpApi factory to use here
-  	YelpApi.retrieveYelp()
-  	.then(function(restaurants){
-  		$scope.data.restaurants = restaurants;
+  // created a YelpApi factory to use here
+  // $scope.printSomething  = function(){
+  //   console.log($scope.name);
+  // };
+    $scope.search = function(){
+                $scope.data.restaurants = {};
+        YelpApi.retrieveYelp($scope.name, function(restaurants){
+          $scope.data.restaurants = restaurants;
+          console.log(restaurants);
+          console.log($scope.data.restaurants.businesses);
+          $scope.name = '';
+        });
 
-  	}).catch(function(error){
-  		console.error(error);
-  	});
+  };
+  	// YelpApi.retrieveYelp($scope.name, function(restaurants){
+  	// 	$scope.data.restaurants = restaurants;
+   //    console.log($scope.data.restaurants.businesses);
+
+  	// });
 
     //add a restaurant
     Restaurants.addOne($scope.restaurant);
