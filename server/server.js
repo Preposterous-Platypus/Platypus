@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
-
+var User = require('./users/userModel.js');
 
 var app = express();
 
@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost/platypus');
 
 //configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
-require('./config/routes.js')(app, express);
+
 
 
 // app.use('/api/restaurants', restaurantRouter);
@@ -27,27 +27,32 @@ app.listen(port, function(err) {
   console.log('Platypus is listening on ' + port);
 });  
 
+app.use(session({secret: 'asdf'}));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(session({secret: 'asdf'}));
 
 passport.use(new GitHubStrategy({
   clientID: '4cc724b73df7e764536f',
   clientSecret: 'dad7b3b87f7478e53ed79186e41ef7aea161ba15',
-  callbackURL: 'http://localhost:8000/auth/github/callback'
+  callbackURL: 'http://127.0.0.1:8000/github/callback'
 }, function(accessToken, refreshToken, profile, callback) {
   console.log(accessToken, refreshToken);
-  var newUser = new User({'github': profile.username});
-  newUser
-    .fetch()
-    .then(function(found) {
+  // console.log('PROFILE >>>>>> ', profile);
+  User
+    .findOne({'gitHubHandle': profile.username}, function(err, found) {
+      console.log('FindOne Executed: ', found);
       if (found) {
+        console.log('user found ', found);
       	callback(null, found);
       } else {
-      	newUser.set('avatar', profile.photos[0].value);
-      	newUser.save()
-      	.then(function() {
+        User.create({ 
+          name: profile.displayName,
+          gitHubHandle: profile.username,
+          email: profile._json.email,
+          iamge: profile.photos[0].value
+        }, function(newUser) {
+          console.log('user created ', newUser);
       	  callback(null, newUser);
       	});
       }
@@ -61,3 +66,5 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   done(null, id);
 });
+
+require('./config/routes.js')(app, express, passport);
