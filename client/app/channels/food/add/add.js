@@ -24,8 +24,4 @@ angular.module('platypus.food-add', ['platypus.services'])
     // Likes.addOne($scope.like);
   }
 
-
-
-    //remove a like
-    Likes.removeOne($scope.like);
  });
