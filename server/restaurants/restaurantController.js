@@ -52,7 +52,7 @@ module.exports = {
 
   removeOne: function(req, res) {
     var query = { _id: req.params.id };
-    User.findOneAndRemove(query, function(err, data) {
+    Restaurant.findOneAndRemove(query, function(err, data) {
       if (err) {
         return res.json(err);
       }
@@ -62,7 +62,7 @@ module.exports = {
 
   retrieveOne: function(req, res) {
     var query = { _id: req.params.id };
-    User.findOne(query, function(err, data) {
+    Restaurant.findOne(query, function(err, data) {
       if (err) {
         return res.json(err);
       }
@@ -72,8 +72,8 @@ module.exports = {
 
   retrieveAll: function(req, res) {
     var query = req.query;
-    console.log("retrievingAll");
-    User.find(query, function(err, data) {
+    console.log("retrievingAll: backend controller");
+    Restaurant.find({}, function(err, data) {
       if (err) {
         return res.json(err);
       }

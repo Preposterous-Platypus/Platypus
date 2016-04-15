@@ -7,6 +7,7 @@ angular.module('platypus.food-feed', ['platypus.services'])
   Restaurants.getAll()
   .then(function(restaurants) {
     $scope.data.restaurants = restaurants;
+    console.log("retrievingAll: frontend controller");
     console.log(restaurants);
   })
   .catch(function(error) {
