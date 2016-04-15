@@ -137,6 +137,7 @@ angular.module('platypus.foodServices', [])
     createOne: createOne
   };
 })
+
 .factory('Likes', function ($http) {
   var getAll = function() {
     return $http({
