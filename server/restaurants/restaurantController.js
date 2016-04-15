@@ -1,11 +1,12 @@
 var Restaurant = require('./RestaurantModel.js');
 var Likes = require('../Likes/LikesModel.js');
-
+var User = require('../users/userModel.js');
 module.exports = {
   //all methods - find, findOne, addOne, delete, deleteOne
   addOne: function(req, res) {
+    console.log("adding one");
     var newRestaurant = req.body;
-    Restaurant.create(newRestaurant, function(err, data) {
+    Restaurant.insert(newRestaurant, function(err, data) {
       if (err) {
         return res.json(err);
       }
@@ -51,7 +52,7 @@ module.exports = {
 
   removeOne: function(req, res) {
     var query = { _id: req.params.id };
-    User.findOneAndRemove(query, function(err, data) {
+    Restaurant.findOneAndRemove(query, function(err, data) {
       if (err) {
         return res.json(err);
       }
@@ -61,7 +62,7 @@ module.exports = {
 
   retrieveOne: function(req, res) {
     var query = { _id: req.params.id };
-    User.findOne(query, function(err, data) {
+    Restaurant.findOne(query, function(err, data) {
       if (err) {
         return res.json(err);
       }
@@ -71,7 +72,8 @@ module.exports = {
 
   retrieveAll: function(req, res) {
     var query = req.query;
-    User.find(query, function(err, data) {
+    console.log("retrievingAll: backend controller");
+    Restaurant.find({}, function(err, data) {
       if (err) {
         return res.json(err);
       }
