@@ -8,7 +8,7 @@ angular.module('platypus.food-add', ['platypus.services'])
   //created a YelpApi factory to use here
   	YelpApi.retrieveYelp("fetchRestaurants", function(restaurants){
   		$scope.data.restaurants = restaurants;
-      console.log("fetching restaurants");
+      console.log($scope.data.restaurants.businesses);
 
   	});
 
