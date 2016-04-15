@@ -1,6 +1,6 @@
 var Restaurant = require('./RestaurantModel.js');
 var Likes = require('../Likes/LikesModel.js');
-
+var User = require('../users/userModel.js');
 module.exports = {
   //all methods - find, findOne, addOne, delete, deleteOne
   addOne: function(req, res) {
