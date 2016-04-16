@@ -66,15 +66,14 @@ angular.module('platypus.foodServices', [])
     });
   };
 
-  var addOne = function(data) {
+  var addOne = function(data, callback) {
     return $http({
       method: 'POST',
       url: '/api/restaurants',    
       data: data
     })
     .then(function(resp) {
-      console.log('Response received to Services: ', resp);
-      return resp;
+      callback(resp);
     });
   };
 
