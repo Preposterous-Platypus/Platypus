@@ -10,13 +10,10 @@ var restaurantSchema = new mongoose.Schema({
   },
   yelpID: String,
   url: {
-    type: String,
-    unique: true,
-    required: true
+    type: String
   },
   eat24_url: {
     type: String,
-    unique: true,
     required: false
   },
   image_url: String,

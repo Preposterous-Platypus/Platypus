@@ -23,7 +23,8 @@ angular.module('platypus.foodServices', [])
             oauth_signature_method:   'HMAC-SHA1',
             oauth_timestamp:          new Date().getTime(),
             oauth_nonce:              randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-            term:                     name || 'food'
+            term:                     name || 'food', 
+            actionlinks:              true
           }; // end params
           var consumerSecret =        'igfK7uLT0q2o8buNgEUoWvGkcIU'; //Consumer Secret
           var tokenSecret =           '19rfxqDsWEfQ7k_QrVQUjEHWopw'; //Token Secret
@@ -72,7 +73,7 @@ angular.module('platypus.foodServices', [])
       data: data
     })
     .then(function(resp) {
-      console.log('POST request was successful!');
+      console.log('Response received to Services: ', resp);
       return resp;
     });
   };
