@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 //do these filepaths look ok?
-var Likes = require('../../server/likes/likesModel');
+var Likes = require('../../server/likes/likesModel.js');
 var likesController = require('../../server/likes/likesController');
 
 var dbURI = 'mongodb://localhost/platypus';

@@ -3,7 +3,7 @@ var restaurantRouter = require('express').Router();
 var restaurantController = require('../restaurants/restaurantController.js');
 
 restaurantRouter.route('/')
-               .post(restaurantController.createOne)
+               .post(restaurantController.addOne)
                .get(restaurantController.retrieveAll);
 
 restaurantRouter.route('/:id')
