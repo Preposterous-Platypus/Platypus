@@ -4,9 +4,9 @@ var User = require('../users/userModel.js');
 module.exports = function(app, session, passport) {
   app.use(session({
     secret: 'asdf',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
-    cookie: { path: '/', httpOnly: true, secure: false, maxAge: 60000 }
+    cookie: { path: '/', httpOnly: true, secure: false, maxAge: null }
     }));
 
   app.use(passport.initialize());

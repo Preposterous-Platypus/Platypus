@@ -4,9 +4,8 @@ var User = require('../users/userModel.js');
 module.exports = {
   //all methods - find, findOne, addOne, delete, deleteOne
   addOne: function(req, res) {
-    console.log("adding one");
     var newRestaurant = req.body;
-    Restaurant.insert(newRestaurant, function(err, data) {
+    Restaurant.create(newRestaurant, function(err, data) {
       if (err) {
         return res.json(err);
       }
