@@ -4,6 +4,7 @@ var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var User = require('./users/userModel.js');
+// var Restaurant = require('./restaurants/restaurantModel.js');
 
 var app = express();
 
@@ -17,9 +18,9 @@ require('./config/routes.js')(app, express);
 
 
 
-// app.use('/api/restaurants', restaurantRouter);
-// app.use('/api/users', userRouter);
-// app.use('/api/likes', likesRouter);
+app.use('/api/restaurants', restaurantRouter);
+app.use('/api/users', userRouter);
+app.use('/api/likes', likesRouter);
 
 app.listen(port, function(err) {
   if (err) {

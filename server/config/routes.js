@@ -17,6 +17,4 @@ module.exports = function (app, express, passport) {
   	  	res.redirect('/#/user/dashboard');
   	  });
   	});
-  app.post('/api/restaurants', restaurantController.addOne);
-  app.get('/api/restaurants', restaurantController.retrieveAll);
 };
