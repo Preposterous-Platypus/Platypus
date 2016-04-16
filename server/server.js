@@ -21,7 +21,12 @@ app.listen(port, function(err) {
   console.log('Platypus is listening on ' + port);
 });  
 
-app.use(session({secret: 'asdf'}));
+app.use(session({
+  secret: 'asdf',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { path: '/', httpOnly: true, secure: false, maxAge: 60000 }
+  }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -31,13 +36,10 @@ passport.use(new GitHubStrategy({
   clientSecret: 'dad7b3b87f7478e53ed79186e41ef7aea161ba15',
   callbackURL: 'http://127.0.0.1:8000/github/callback'
 }, function(accessToken, refreshToken, profile, callback) {
-  // console.log(accessToken, refreshToken);
   // console.log('PROFILE >>>>>> ', profile);
   User
     .findOne({'gitHubHandle': profile.username}, function(err, found) {
-      console.log('FindOne Executed: ', found);
       if (found) {
-        console.log('user found ', found);
       	callback(null, found);
       } else {
         User.create({ 
@@ -54,7 +56,6 @@ passport.use(new GitHubStrategy({
 }));
 
 passport.serializeUser(function(user, done) {
-  // console.log('USER IS ===>>', user.get('id'));
   done(null, user.get('id'));
 });
 

@@ -23,8 +23,8 @@ module.exports = function (app, express, passport) {
   	});
 
   app.get('/logout', function(req, res) {
-  req.session.destroy();
-  res.redirect('/');
+    req.session.destroy();
+    res.redirect('/');
   });
 
   // API endpoints for non-
