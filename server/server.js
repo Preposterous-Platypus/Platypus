@@ -14,12 +14,6 @@ mongoose.connect('mongodb://localhost/platypus');
 //configure our server with all the middleware and routing
 require('./config/middleware.js')(app, express);
 
-
-
-// app.use('/api/restaurants', restaurantRouter);
-// app.use('/api/users', userRouter);
-// app.use('/api/likes', likesRouter);
-
 app.listen(port, function(err) {
   if (err) {
     return console.log(err);
@@ -37,7 +31,7 @@ passport.use(new GitHubStrategy({
   clientSecret: 'dad7b3b87f7478e53ed79186e41ef7aea161ba15',
   callbackURL: 'http://127.0.0.1:8000/github/callback'
 }, function(accessToken, refreshToken, profile, callback) {
-  console.log(accessToken, refreshToken);
+  // console.log(accessToken, refreshToken);
   // console.log('PROFILE >>>>>> ', profile);
   User
     .findOne({'gitHubHandle': profile.username}, function(err, found) {
@@ -47,11 +41,11 @@ passport.use(new GitHubStrategy({
       	callback(null, found);
       } else {
         User.create({ 
-          name: profile.displayName,
+          name: profile.displayName === null ? profile.username : profile.displayName,
           gitHubHandle: profile.username,
           email: profile._json.email,
-          iamge: profile.photos[0].value
-        }, function(newUser) {
+          image: profile.photos[0].value
+        }, function(err, newUser) {
           console.log('user created ', newUser);
       	  callback(null, newUser);
       	});
@@ -60,6 +54,7 @@ passport.use(new GitHubStrategy({
 }));
 
 passport.serializeUser(function(user, done) {
+  // console.log('USER IS ===>>', user.get('id'));
   done(null, user.get('id'));
 });
 
