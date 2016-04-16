@@ -4,6 +4,10 @@ var session = require('express-session');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var User = require('./users/userModel.js');
+var restaurantRouter = require('./routers/restaurantRouter.js');
+var userRouter = require('./routers/userRouter.js');
+var likesRouter = require('./routers/likesRouter.js');
+
 
 var app = express();
 
@@ -16,9 +20,6 @@ require('./config/middleware.js')(app, express);
 
 
 
-// app.use('/api/restaurants', restaurantRouter);
-// app.use('/api/users', userRouter);
-// app.use('/api/likes', likesRouter);
 
 app.listen(port, function(err) {
   if (err) {
@@ -68,3 +69,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 require('./config/routes.js')(app, express, passport);
+
+app.use('/api/restaurants', restaurantRouter);
+app.use('/api/users', userRouter);
+app.use('/api/likes', likesRouter);
