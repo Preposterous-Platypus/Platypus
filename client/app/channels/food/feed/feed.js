@@ -13,4 +13,6 @@ angular.module('platypus.food-feed', ['platypus.services'])
   .catch(function(error) {
     console.error(error);
   });
+
+  $scope.feedOrder = '-likes';
 });
