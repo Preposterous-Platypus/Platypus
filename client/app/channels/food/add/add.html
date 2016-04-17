@@ -10,6 +10,7 @@
  </div>
 
  <div class="row">
+ <img src="/../../../assets/loading.gif" ng-show="loading" class="center-block">
  <div class="col-lg-3 col-sm-6 col-md-3" data-ng-repeat="restaurant in data.restaurants.data.businesses">
    <div class="thumbnail" ng-class="{'existing-thumb' : data.currentRestaurants[restaurant.id]}">
          <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">

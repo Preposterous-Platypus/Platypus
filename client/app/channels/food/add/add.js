@@ -2,10 +2,12 @@ angular.module('platypus.food-add', [])
  .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes, $location){
 
   $scope.data = {};
+  $scope.loading = false;
 
   $scope.search = function(){
     $scope.data.restaurants = {};
     $scope.data.currentRestaurants = {};
+    $scope.loading = true;
 
     YelpApi.retrieveYelp($scope.name, function(restaurants){
       // Find currently tracked restaurants
@@ -13,6 +15,7 @@ angular.module('platypus.food-add', [])
         for(var i = 0; i < resp.length; i++) {
           $scope.data.currentRestaurants[resp[i].yelpID] = true;
         }
+        $scope.loading = false;
         $scope.data.restaurants = restaurants;
         console.log(restaurants);
         $scope.name = '';
