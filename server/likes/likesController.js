@@ -51,7 +51,7 @@ module.exports = {
     var restaurant = { restaurant: req.body.restaurant };
     Likes
     .find(query)
-    .populate(restaurant)
+    .populate('req.body.restaurant', ['restaurant'])
     .exec(function(err, restaurant) {
       if (err) {
         return err;

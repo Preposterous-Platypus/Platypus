@@ -5,7 +5,7 @@
     <div class="col-md-1 text-hide">&nbsp;</div>
     <label class="control-label col-md-1">Filter:</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" ng-submit="filter()" ng-model="filter" ng-keypress="$event.which === 13 && filter()">
+      <input type="text" class="form-control" ng-submit="filter()" ng-model="name" ng-keypress="$event.which === 13 && filter()">
       </div>
 
       <label class="control-label col-md-1">Sort:</label>
@@ -21,7 +21,7 @@
 
   <!--Add Dashboard Items-->
   <div class="row">
-    <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants.data.businesses">
+    <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants">
       <div class="thumbnail">
           <img ng-src="{{restaurant.img_url}}" alt="{{restaurant.name}}">
           <div class="caption">

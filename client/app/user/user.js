@@ -6,17 +6,16 @@ angular.module('platypus.user', [])
   $scope.populate = function() {
     $scope.data.restaurants = {};
 
-    Likes.retrieveLikedRestaurants($scope.user, function(restaurants) {
-      console.log('I\'M RIGHT HERE!!');
+    Likes.retrieveLikedRestaurants($scope.name, function(restaurants) {
       $scope.data.restaurants = restaurants;
       console.log(restaurants);
-      $scope.filter = '';
+      $scope.name = '';
     });
   };
 
   $scope.populate();
 
-  //filter out restaurants
+  // filter out restaurants
   // $scope.filter = function() {
   //   $scope.data.restaurants = {};
 
