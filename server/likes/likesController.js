@@ -2,7 +2,12 @@ var Likes = require('./likesModel.js');
 
 module.exports = {
   addOne: function(req, res) {
-    var newLikes = req.body;
+    // console.log('REQUEST IS >>>>', req);
+    console.log('SESSION DATA >>>', req.session);
+    var newLikes = {
+      restaurant: req.body.restaurant,
+      user: req.session.passport.user
+    };
     Likes.create(newLikes, function(err, response) {
       if (err) {
         return res.json(err);

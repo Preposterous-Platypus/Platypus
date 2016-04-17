@@ -1,5 +1,5 @@
 angular.module('platypus.food-add', [])
- .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes){
+ .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes, $location){
 
   $scope.data = {};
 
@@ -18,12 +18,10 @@ angular.module('platypus.food-add', [])
   $scope.addOne = function(restaurant){
     var restaurantCategories = [];
 
+    // Categories Have extra information that has to be sanitized 
     for(var i = 0; i < restaurant.categories.length; i++) {
       restaurantCategories.push(restaurant.categories[i][0]);
     }
-
-    console.log('Original categories are ', restaurant.categories);
-    console.log('categories are ', restaurantCategories);
 
     Restaurants.addOne({
       name: restaurant.name,
@@ -32,8 +30,11 @@ angular.module('platypus.food-add', [])
       image_url: restaurant.image_url,
       likes: 0,
       categories: restaurantCategories
+    }, function(resp) {
+      var id = {restaurant: resp.data._id};
+        Likes.addOne(id, function(resp) {
+          $location.path('/user/dashboard');
+        });
     });
-    //add a like
-    // Likes.addOne($scope.like);
   }
  });
