@@ -40,10 +40,12 @@ angular.module('platypus.foodServices', [])
             ); 
             // end signature
           params['oauth_signature'] = signature;
-          console.log("inside yelpapi factory");
-          console.log(params.term);
+          console.log('inside yelpapi factory');
+          console.log('Term searched for: ' + params.term);
           $http.jsonp(url, { params : params })
-            .then(callback);
+            .then(callback, function(err) {
+              console.log('An error occured: ', err);
+            });
             console.log("inside end of yelpapi factory");
         }; // end retrieveYelp
 
