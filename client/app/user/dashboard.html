@@ -23,11 +23,11 @@
   <div class="row">
     <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants">
       <div class="thumbnail">
-          <img ng-src="{{restaurant.img_url}}" alt="{{restaurant.name}}">
+          <img ng-src="{{restaurant.restaurant.image_url}}" alt="{{restaurant.restaurant.name}}">
           <div class="caption">
-            <span class="thumbnail-title">{{restaurant.name}}</span>
-            <!-- <a href="#" class="btn btn-default" role="button">
-            <span class="glyphicon glyphicon-thumbs-up"></span> 58</a> -->
+            <span class="thumbnail-title">{{restaurant.restaurant.name}}</span>
+            <a href="#" class="btn btn-default" role="button">
+            <span class="glyphicon glyphicon-thumbs-up"></span> 60</a>
           </div>
       </div>
     </div>

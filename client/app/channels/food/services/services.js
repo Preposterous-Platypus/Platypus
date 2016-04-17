@@ -175,15 +175,15 @@ angular.module('platypus.foodServices', [])
     });
   };
 
-  var retrieveLikedRestaurants = function() {
+  var retrieveLikedRestaurants = function(callback) {
     return $http({
       method: 'GET',
       url: '/api/likes',
     })
     .then(function(resp) {
       console.log('GET request was successful - all Liked Restaurants retrieved.');
-      console.log(resp.data);
-      return resp.data;
+      // console.log(resp.data);
+      callback(resp.data);
     });
   };
   return {

@@ -48,15 +48,15 @@ module.exports = {
 
   retrieveLikedRestaurants: function(req, res) {
     var query = { user: req.session.passport.user };
-    var restaurant = { restaurant: req.body.restaurant };
+    // var restaurant = { restaurant: req.body.restaurant };
     Likes
     .find(query)
-    .populate('req.body.restaurant', ['restaurant'])
-    .exec(function(err, restaurant) {
+    .populate('restaurant')
+    .exec(function(err, restaurants) {
       if (err) {
         return err;
       }
-      console.log(restaurant.data.businesses);
+      res.send(restaurants);
     });
   }
 };
