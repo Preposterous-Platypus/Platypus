@@ -14,6 +14,8 @@ angular.module('platypus.user', [])
 
   $scope.populate();
 
+  $scope.feedOrder = '-likes';
+
   // filter out restaurants
   // $scope.filter = function() {
   //   $scope.data.restaurants = {};

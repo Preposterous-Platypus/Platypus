@@ -5,29 +5,29 @@
     <div class="col-md-1 text-hide">&nbsp;</div>
     <label class="control-label col-md-1">Filter:</label>
     <div class="col-md-4">
-      <input type="text" class="form-control" ng-submit="filter()" ng-model="name" ng-keypress="$event.which === 13 && filter()">
+      <input type="text" class="form-control" ng-model="feedFilter" placeholder="Filter by" autofocus>
       </div>
 
       <label class="control-label col-md-1">Sort:</label>
       <div class="col-md-4 sort-container">
-        <select>
-        <option>Liked: Most Popular to Least</option>
-        <option>Liked: Most Popular to Least</option>
-        <option>Distance: Closest First</option>
-        <option>Distance: Furthest First</option>
+        <select ng-model="feedOrder">
+          <option value="-likes">Liked: Most Popular to Least</option>
+          <option value="likes">Liked: Least Popular to Most</option>
         </select>
-        </div>
+      </div>
   </div>
 
   <!--Add Dashboard Items-->
   <div class="row">
-    <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants">
+    <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants | filter:feedFilter | orderBy: feedOrder">
       <div class="thumbnail">
-          <img ng-src="{{restaurant.restaurant.image_url}}" alt="{{restaurant.restaurant.name}}">
+          <img ng-src="{{restaurant.restaurant.image_url}}" width="150" height="150" alt="{{restaurant.restaurant.name}}">
           <div class="caption">
             <span class="thumbnail-title">{{restaurant.restaurant.name}}</span>
+            <!-- <a href="#" class="btn btn-default" role="button">
+            <span class="glyphicon glyphicon-thumbs-up"></span> {{restaurant.restaurant.likes}} </a> -->
             <a href="#" class="btn btn-default" role="button">
-            <span class="glyphicon glyphicon-thumbs-up"></span> 60</a>
+            <span class="glyphicon glyphicon-tag"></span> {{restaurant.restaurant.categories[0]}}</a>
           </div>
       </div>
     </div>
