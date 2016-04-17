@@ -44,5 +44,19 @@ module.exports = {
       }
       res.json(response);
     });
+  },
+
+  retrieveLikedRestaurants: function(req, res) {
+    var query = { user: req.session.passport.user };
+    var restaurant = { restaurant: req.body.restaurant };
+    Likes
+    .find(query)
+    .populate(restaurant)
+    .exec(function(err, restaurant) {
+      if (err) {
+        return err;
+      }
+      console.log(restaurant.data.businesses);
+    });
   }
 };
