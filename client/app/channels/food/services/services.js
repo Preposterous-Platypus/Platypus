@@ -40,10 +40,12 @@ angular.module('platypus.foodServices', [])
             ); 
             // end signature
           params['oauth_signature'] = signature;
-          console.log("inside yelpapi factory");
-          console.log(params.term);
+          console.log('inside yelpapi factory');
+          console.log('Term searched for: ' + params.term);
           $http.jsonp(url, { params : params })
-            .then(callback);
+            .then(callback, function(err) {
+              console.log('An error occured: ', err);
+            });
             console.log("inside end of yelpapi factory");
         }; // end retrieveYelp
 
@@ -64,6 +66,16 @@ angular.module('platypus.foodServices', [])
     .then(function(resp) {
       console.log('GET request was successful!');
       return resp.data;
+    });
+  };
+
+  var retrieveYelpIDs = function(callback) {
+    return $http({
+      method: 'GET',
+      url: '/api/restaurants/yelpIDs',
+    })
+    .then(function(resp) {
+      callback(resp.data);
     });
   };
 
@@ -106,7 +118,8 @@ angular.module('platypus.foodServices', [])
     getAll: getAll,
     addOne: addOne,
     removeOne: removeOne,
-    updateLikes: updateLikes
+    updateLikes: updateLikes,
+    retrieveYelpIDs: retrieveYelpIDs
   };
 })
 

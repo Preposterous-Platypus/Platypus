@@ -136,3 +136,12 @@ body {
 .caption .btn {
   float: right;
 }
+
+.existing-thumb {
+  background: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.existing-thumb .caption {
+  color: #FFFFFF;
+}

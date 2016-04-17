@@ -6,6 +6,9 @@ restaurantRouter.route('/')
                .post(restaurantController.addOne)
                .get(restaurantController.retrieveAll);
 
+restaurantRouter.route('/yelpIDs')
+               .get(restaurantController.retrieveYelpIDs);
+
 restaurantRouter.route('/:id')
                .get(restaurantController.retrieveOne)
                .put(restaurantController.updateOne)

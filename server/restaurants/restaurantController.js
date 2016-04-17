@@ -13,6 +13,15 @@ module.exports = {
     });
   },
 
+  retrieveYelpIDs: function(req, res) {
+    Restaurant.find({}, 'yelpID', function(err, data) {
+      if (err) {
+        return res.json(err);
+      }
+      res.json(data);
+    });
+  },
+
   updateOne: function(req, res) {
     var query = { _id: req.params.id };
     var updatedProps = req.body;

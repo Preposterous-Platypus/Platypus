@@ -2,22 +2,24 @@
 <div ng-include="'app/partials/nav.html'"></div>
 
  <div class="row feed-filter">
- <div class="col-md-1 text-hide">&nbsp;</div>
+ <div class="col-lg-3 col-md-3 text-hide">&nbsp;</div>
    <label class="control-label col-md-1">Search:</label>
-   <div class="col-md-4">
-     <input type="text" class="form-control" ngSubmit = "search()" ng-model="name" ng-keypress="$event.which === 13 && search()">
+   <div class="col-lg-4 col-md-4">
+     <input type="text" class="form-control" ngSubmit = "search()" ng-model="name" ng-keypress="$event.which === 13 && search()" placeholder="Restaurant Name..." autofocus>
      </div>
  </div>
 
  <div class="row">
+ <img src="/../../../assets/loading.gif" ng-show="loading" class="center-block">
  <div class="col-lg-3 col-sm-6 col-md-3" data-ng-repeat="restaurant in data.restaurants.data.businesses">
-   <div class="thumbnail">
+   <div class="thumbnail" ng-class="{'existing-thumb' : data.currentRestaurants[restaurant.id]}">
          <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
-           <a class="btn btn-success" role="button" ng-click="addOne(restaurant)">
+           <a class="btn btn-success" role="button" ng-click="addOne(restaurant)" ng-hide="data.currentRestaurants[restaurant.id]">
            <span role="button" class="glyphicon glyphicon-plus"></span> Add
            </a>
+           <span ng-show="data.currentRestaurants[restaurant.id]">Already Added</span>
          </div>
        </div>
        </div>
