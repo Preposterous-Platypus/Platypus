@@ -17,7 +17,8 @@ angular.module('platypus.foodServices', [])
           var url =     'http://api.yelp.com/v2/search';
           var params = {
             callback:                 'angular.callbacks._0',
-            location:                 'San+Francisco',
+            ll:                       '37.7836963,-122.4096779',
+            radius_filter:            '3219',
             oauth_consumer_key:       'UVOv68GWWuYUEHgIOs2kbA', // consumer key
             oauth_token:              'rGxuTEJtPFiQswZ3ai4up_qKrDBWPlQy', //Token
             oauth_signature_method:   'HMAC-SHA1',
