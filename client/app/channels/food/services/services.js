@@ -174,9 +174,22 @@ angular.module('platypus.foodServices', [])
       return resp;
     });
   };
+
+  var retrieveLikedRestaurants = function(data) {
+    return $http({
+      method: 'GET',
+      url: '/api/likes',
+      data: data
+    })
+    .then(function(resp) {
+      console.log('GET request was successful - all Liked Restaurants retrieved.');
+      return resp;
+    });
+  };
   return {
     getAll: getAll,
     addOne: addOne,
-    removeOne: removeOne
+    removeOne: removeOne,
+    retrieveLikedRestaurants: retrieveLikedRestaurants
   };
 });
