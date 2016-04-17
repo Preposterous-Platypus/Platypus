@@ -14,10 +14,5 @@ angular.module('platypus.food-feed', ['platypus.services'])
     console.error(error);
   });
 
-  $scope.feedOrder = 'likes';
-  $scope.direction = true;
-  // $scope.sortData = function(setting) {
-  //   $scope.direction = setting;
-  //   console.log('Direction is', $scope.direction);
-  // };
+  $scope.feedOrder = '-likes';
 });
