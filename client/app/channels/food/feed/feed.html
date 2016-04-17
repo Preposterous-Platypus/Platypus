@@ -5,28 +5,28 @@
   <div class="col-md-1 text-hide">&nbsp;</div>
   <label class="control-label col-md-1">Filter:</label>
   <div class="col-md-4">
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" ng-model="feedFilter" placeholder="Filter by" autofocus>
     </div>
 
     <label class="control-label col-md-1">Sort:</label>
     <div class="col-md-4 sort-container">
-      <select>
-      <option>Liked: Most Popular to Least</option>
-      <option>Liked: Most Popular to Least</option>
-      <option>Distance: Closest First</option>
-      <option>Distance: Furthest First</option>
+      <select ng-model="feedOrder">
+        <option value="-likes">Liked: Most Popular to Least</option>
+        <option value="likes">Liked: Least Popular to Most</option>
       </select>
       </div>
 </div>
 
  <div class="row">
- <div class="col-lg-3 col-sm-6 col-md-3" data-ng-repeat="restaurant in data.restaurants">
+ <div class="col-lg-3 col-sm-6 col-md-3" data-ng-repeat="restaurant in data.restaurants | filter:feedFilter | orderBy: feedOrder">
    <div class="thumbnail">
-         <img ng-src="{{restaurant.image_url}}" alt="...">
+         <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
-           
-           <span role="button" class="btn btn-default glyphicon glyphicon-thumbs-up" ng-click="addOne(restaurant)"></span>
+           <a role="button" class="btn btn-default" ng-click="addOne(restaurant)">
+           <span class="glyphicon glyphicon-thumbs-up"></span>
+           {{restaurant.likes}}
+           </a>
          </div>
        </div>
        </div>
