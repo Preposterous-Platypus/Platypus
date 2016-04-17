@@ -3,15 +3,20 @@ angular.module('platypus.food-add', [])
 
   $scope.data = {};
 
-  $scope.like = {};
-
   $scope.search = function(){
     $scope.data.restaurants = {};
+    $scope.data.currentRestaurants = {};
 
     YelpApi.retrieveYelp($scope.name, function(restaurants){
-      $scope.data.restaurants = restaurants;
-      console.log(restaurants);
-      $scope.name = '';
+      // Find currently tracked restaurants
+      Restaurants.retrieveYelpIDs(function(resp) {
+        for(var i = 0; i < resp.length; i++) {
+          $scope.data.currentRestaurants[resp[i].yelpID] = true;
+        }
+        $scope.data.restaurants = restaurants;
+        console.log(restaurants);
+        $scope.name = '';
+      });
     });
   };
 

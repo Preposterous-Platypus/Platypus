@@ -67,6 +67,16 @@ angular.module('platypus.foodServices', [])
     });
   };
 
+  var retrieveYelpIDs = function(callback) {
+    return $http({
+      method: 'GET',
+      url: '/api/restaurants/yelpIDs',
+    })
+    .then(function(resp) {
+      callback(resp.data);
+    });
+  };
+
   var addOne = function(data, callback) {
     return $http({
       method: 'POST',
@@ -106,7 +116,8 @@ angular.module('platypus.foodServices', [])
     getAll: getAll,
     addOne: addOne,
     removeOne: removeOne,
-    updateLikes: updateLikes
+    updateLikes: updateLikes,
+    retrieveYelpIDs: retrieveYelpIDs
   };
 })
 
