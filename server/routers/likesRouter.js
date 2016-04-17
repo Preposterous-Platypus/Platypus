@@ -4,7 +4,7 @@ var likesController = require('../likes/likesController.js');
 
 likesRouter.route('/')
                .post(likesController.addOne)
-               .get(likesController.retrieveAll);
+               .get(likesController.retrieveLikedRestaurants);
 
 likesRouter.route('/:id')
                .get(likesController.retrieveOne)
