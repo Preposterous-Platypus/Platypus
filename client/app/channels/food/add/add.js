@@ -1,5 +1,5 @@
 angular.module('platypus.food-add', [])
- .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes){
+ .controller('FoodAddController', function($scope, YelpApi, Restaurants, Likes, $location){
 
   $scope.data = {};
 
@@ -32,8 +32,9 @@ angular.module('platypus.food-add', [])
       categories: restaurantCategories
     }, function(resp) {
       var id = {restaurant: resp.data._id};
-        //add a like
-        Likes.addOne(id);
+        Likes.addOne(id, function(resp) {
+          $location.path('/user/dashboard');
+        });
     });
   }
  });

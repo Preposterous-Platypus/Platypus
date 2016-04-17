@@ -151,15 +151,14 @@ angular.module('platypus.foodServices', [])
   };
 
 //join create may need to be reimplemented
-  var addOne = function(data) {
+  var addOne = function(data, callback) {
     return $http({
       method: 'POST',
       url: '/api/likes',    
       data: data
     })
     .then(function(resp) {
-      console.log('POST request was successful!');
-      return resp;
+      callback(resp);
     });
   };
 
