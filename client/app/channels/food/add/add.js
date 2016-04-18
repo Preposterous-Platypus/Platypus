@@ -17,7 +17,6 @@ angular.module('platypus.food-add', [])
         }
         $scope.loading = false;
         $scope.data.restaurants = restaurants;
-        console.log(restaurants);
         $scope.name = '';
       });
     });
@@ -41,7 +40,11 @@ angular.module('platypus.food-add', [])
     }, function(resp) {
       var id = {restaurant: resp.data._id};
         Likes.addOne(id, function(resp) {
-          $location.path('/user/dashboard');
+          Restaurants.updateLikes(id.restaurant) 
+          .then(function(resp){
+            console.log('Response to like update', resp);
+            $location.path('/user/dashboard');
+          });
         });
     });
   }
