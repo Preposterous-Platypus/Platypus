@@ -109,8 +109,8 @@ angular.module('platypus.foodServices', [])
       }
     })
     .then(function(resp) {
-      console.log('PUT request was successful!');
-      return resp;
+      console.log('updateLikes - PUT request was successful!');
+      return resp.data;
     });
   };
 
