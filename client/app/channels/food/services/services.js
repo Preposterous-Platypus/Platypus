@@ -214,11 +214,23 @@ angular.module('platypus.foodServices', [])
     });
   };
 
+  var findUserLikes = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/likes/user',
+    })
+    .then(function(resp) {
+      // console.log('GET was successful - findUserLikes');
+      return resp.data;
+    });
+  };
+
   return {
     getAll: getAll,
     addOne: addOne,
     removeOne: removeOne,
     retrieveLikedRestaurants: retrieveLikedRestaurants,
-    addOrRemove: addOrRemove
+    addOrRemove: addOrRemove,
+    findUserLikes: findUserLikes
   };
 });

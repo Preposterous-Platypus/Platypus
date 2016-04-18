@@ -3,7 +3,7 @@ var Likes = require('./likesModel.js');
 module.exports = {
   addOne: function(req, res) {
     // console.log('REQUEST IS >>>>', req);
-    console.log('SESSION DATA >>>', req.session);
+    // console.log('SESSION DATA >>>', req.session);
     var newLikes = {
       restaurant: req.body.restaurant,
       user: req.session.passport.user
@@ -88,6 +88,21 @@ module.exports = {
         res.send(200, response);
        
       }
+    });
+  },
+
+  findUserLikes: function(req, res) {
+    // console.log('req ', req);
+    // console.log('SESSION DATA >>>', req.session);
+    console.log('req.session.passport.user ', req.session.passport.user);
+    var query = { user: req.session.passport.user };
+
+    Likes.find(query, 'restaurant', function(err, response) {
+      if (err) {
+        console.log(res.send(err));
+      }
+      console.log(response);
+      res.send(200, response);
     });
   }
 };

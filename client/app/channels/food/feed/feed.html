@@ -23,7 +23,7 @@
          <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
-           <a role="button" class="btn btn-default" ng-click="updateLikes(restaurant._id)">
+           <a role="button" class="btn btn-default" ng-class="{'btn-primary' : data.likes[restaurant._id]}" ng-click="updateLikes(restaurant._id)">
            <span class="glyphicon glyphicon-thumbs-up"></span>
            {{restaurant.likes}}
            </a>
