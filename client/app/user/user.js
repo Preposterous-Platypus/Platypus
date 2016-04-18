@@ -4,7 +4,6 @@ angular.module('platypus.user', [])
   $scope.data = {};
 
   $scope.populate = function() {
-    $scope.data.restaurants = {};
 
     Likes.retrieveLikedRestaurants(function(restaurants) {
       $scope.data.restaurants = restaurants;
@@ -15,10 +14,4 @@ angular.module('platypus.user', [])
   $scope.populate();
 
   $scope.feedOrder = '-likes';
-
-  // filter out restaurants
-  // $scope.filter = function() {
-  //   $scope.data.restaurants = {};
-
-  // };
 });
