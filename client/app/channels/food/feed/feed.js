@@ -3,13 +3,14 @@ angular.module('platypus.food-feed', ['platypus.services'])
   
   $scope.data = {};
 
-  $scope.likes = {};
+  $scope.data.likes = {};
 
   var updateUserLikes = function() {
     Likes.findUserLikes()
     .then(function(likes) {
+      $scope.data.likes = {};
       for (var i = 0; i < likes.length; i++) {
-        $scope.likes[likes[i].restaurant] = true;
+        $scope.data.likes[likes[i].restaurant] = true;
       }
     });
   };
@@ -33,7 +34,6 @@ angular.module('platypus.food-feed', ['platypus.services'])
   $scope.updateLikes = function(restID) {
     Likes.addOrRemove(restID)
     .then(function(liked) {
-      console.log(liked);
       Restaurants.updateLikes(restID)
       .then(function(likes) {
         var restaurants = $scope.data.restaurants;
