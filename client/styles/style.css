@@ -26,6 +26,10 @@ address {
   margin-bottom: 10px;
 }
 
+.logo-link {
+  text-decoration: none !important;
+}
+
 .dropdown {
   float: right;
   margin-top: 2em;
