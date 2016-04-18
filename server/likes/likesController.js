@@ -58,5 +58,36 @@ module.exports = {
       }
       res.send(restaurants);
     });
+  },
+
+  addOrRemove: function(req, res) {
+    var query = { restaurant: req.body.restaurant };
+
+    Likes.findOneAndRemove(query, function(err, response) {
+      if (err) {
+        console.log(res.send(err));
+      }
+      if (!response) {
+        var newLikes = {
+          restaurant: req.body.restaurant,
+          user: req.session.passport.user
+        };
+        Likes.create(newLikes, function(err, response) {
+          if (err) {
+            return res.send(err);
+          }
+          response = {
+            liked: true
+          };
+          res.send(response);
+        });
+      } else {
+        response = {
+          liked: false
+        };
+        res.send(200, response);
+       
+      }
+    });
   }
 };
