@@ -4,7 +4,8 @@ var restaurantController = require('../restaurants/restaurantController.js');
 
 restaurantRouter.route('/')
                .post(restaurantController.addOne)
-               .get(restaurantController.retrieveAll);
+               .get(restaurantController.retrieveAll)
+               .put(restaurantController.updateLikes);
 
 restaurantRouter.route('/yelpIDs')
                .get(restaurantController.retrieveYelpIDs);

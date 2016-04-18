@@ -104,7 +104,9 @@ angular.module('platypus.foodServices', [])
     return $http({
       method: 'PUT',
       url: '/api/restaurants',    
-      data: data
+      data: {
+        restaurant: data
+      }
     })
     .then(function(resp) {
       console.log('PUT request was successful!');
@@ -197,10 +199,26 @@ angular.module('platypus.foodServices', [])
       callback(resp.data);
     });
   };
+
+  var addOrRemove = function(dataID) {
+    return $http({
+      method: 'POST',
+      url: '/api/likes/addOrRemove',
+      data: {
+        restaurant: dataID
+      }
+    })
+    .then(function(resp) {
+      console.log('POST was successful - addOrRemove');
+      return resp.data;
+    });
+  };
+
   return {
     getAll: getAll,
     addOne: addOne,
     removeOne: removeOne,
-    retrieveLikedRestaurants: retrieveLikedRestaurants
+    retrieveLikedRestaurants: retrieveLikedRestaurants,
+    addOrRemove: addOrRemove
   };
 });

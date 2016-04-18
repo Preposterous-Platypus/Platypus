@@ -61,11 +61,11 @@ module.exports = {
   },
 
   addOrRemove: function(req, res) {
-    var query = { _id: req.params.id };
+    var query = { restaurant: req.body.restaurant };
 
     Likes.findOneAndRemove(query, function(err, response) {
       if (err) {
-        console.log(res.json(err), null);
+        console.log(res.send(err));
       }
       if (!response) {
         var newLikes = {
@@ -74,10 +74,19 @@ module.exports = {
         };
         Likes.create(newLikes, function(err, response) {
           if (err) {
-            return res.json(err, null);
+            return res.send(err);
           }
-          res.json(null, response);
+          response = {
+            liked: true
+          };
+          res.send(response);
         });
+      } else {
+        response = {
+          liked: false
+        };
+        res.send(200, response);
+       
       }
     });
   }

@@ -19,15 +19,18 @@ angular.module('platypus.food-feed', ['platypus.services'])
   $scope.feedOrder = '-likes';
 
   //update Likes
-  Likes.addOrRemove()
-  .then(function(liked) {
-    console.log(liked);
-    Restaurant.updateLikes()
-    .then(function(likes) {
-      console.log(likes);
+  $scope.updateLikes = function(restID) {
+    Likes.addOrRemove(restID)
+    .then(function(liked) {
+      console.log(liked);
+      Restaurants.updateLikes(restID)
+      .then(function(likes) {
+        console.log(likes);
+      });
+    })
+    .catch(function(error) {
+      console.log(error);
     });
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+  };
+  
 });

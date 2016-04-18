@@ -38,13 +38,13 @@ module.exports = {
   },
 
   updateLikes: function(req, res) {
-    var query = { _id: req.params.id };
+    var query = { _id: req.body.restaurant };
     //reference for count http://mongoosejs.com/docs/api.html
-    Likes.query.count({restaurant: req.params.id}, function(err, data){
+    Likes.count({restaurant: req.body.restaurant}, function(err, data){
       if(err){
         return res.json(err);
       }
-      var updatedProps = {likes: data};
+      var updatedProps = { likes: data };
       var options = {
         new: true,
         upsert: true
@@ -53,7 +53,7 @@ module.exports = {
         if (err) {
           return res.json(err);
         }
-        res.json(data);
+        res.send(data);
       });    
     });
   },
