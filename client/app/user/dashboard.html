@@ -27,14 +27,21 @@
   <div class="row">
     <div class="col-lg-3 col-sm-6 col-md-3" ng-repeat="restaurant in data.restaurants | filter:feedFilter | orderBy: feedOrder">
       <div class="thumbnail">
-          <img ng-src="{{restaurant.restaurant.image_url}}" alt="{{restaurant.restaurant.name}}" class="img-rounded">
-          <div class="caption">
-            <span class="thumbnail-title">{{restaurant.restaurant.name}}</span>
-            <a class="btn btn-default" role="button" ng-class="{'btn-primary' : data.likes[restaurant._id]}" ng-click="updateLikes(restaurant._id)">
-            <span class="glyphicon glyphicon-thumbs-up"></span> {{restaurant.restaurant.likes}} </a>
-            <a href="#" class="btn btn-default" role="button">
-            <span class="glyphicon glyphicon-tag" ng-hide="{{restaurant.restaurant.categories[0]}}"></span> {{category}}</a>
+        <img ng-src="{{restaurant.restaurant.image_url}}" alt="{{restaurant.restaurant.name}}" class="img-rounded">
+        <div class="caption">
+          <span class="thumbnail-title">{{restaurant.restaurant.name}}</span>
+          <div class="row category-holder">
+            <span class="glyphicon glyphicon-tag"></span> 
+            <span ng-repeat="category in restaurant.restaurant.categories">
+            <span ng-hide="category === restaurant.restaurant.categories[0]">, </span>{{category}}</span>
           </div>
+          <div class="row">
+            <a role="button" class="btn btn-primary" ng-click="updateLikes(restaurant.restaurant._id)">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            {{restaurant.restaurant.likes}}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
