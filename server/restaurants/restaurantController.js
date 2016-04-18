@@ -53,7 +53,8 @@ module.exports = {
         if (err) {
           return res.json(err);
         }
-        res.send(data);
+        console.log('data.likes ', data.likes);
+        res.send(200, data.likes);
       });    
     });
   },

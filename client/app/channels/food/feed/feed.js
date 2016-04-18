@@ -3,7 +3,18 @@ angular.module('platypus.food-feed', ['platypus.services'])
   
   $scope.data = {};
 
-  // $scope.likes = {};
+  $scope.likes = {};
+
+  var updateUserLikes = function() {
+    Likes.findUserLikes()
+    .then(function(likes) {
+      for (var i = 0; i < likes.length; i++) {
+        $scope.likes[likes[i].restaurant] = true;
+      }
+    });
+  };
+
+  updateUserLikes();
 
   //get all restaurants from database
   Restaurants.getAll()
@@ -25,12 +36,17 @@ angular.module('platypus.food-feed', ['platypus.services'])
       console.log(liked);
       Restaurants.updateLikes(restID)
       .then(function(likes) {
-        console.log(likes);
+        var restaurants = $scope.data.restaurants;
+        for (var i = 0; i < restaurants.length; i++) {
+          if (restaurants[i]._id === restID) {
+            restaurants[i].likes = likes;
+          }
+        }
+        updateUserLikes();
       });
     })
     .catch(function(error) {
       console.log(error);
     });
   };
-  
 });
