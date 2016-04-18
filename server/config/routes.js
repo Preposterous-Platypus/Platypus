@@ -7,6 +7,10 @@ var userRouter = require('../routers/userRouter.js');
 var likesRouter = require('../routers/likesRouter.js');
 
 module.exports = function (app, express, passport) {
+  var isAuth = function(req, res, next) {
+    req.isAuthenticated() ? next() : res.status(403).send('Error: not authorized.');
+  };
+
   //API endpoints for signIn, signUp, and checkAuth
   app.get('/api/users/signedin', function(req, res) {
     res.send(req.isAuthenticated() ? req.user : false);
@@ -28,7 +32,7 @@ module.exports = function (app, express, passport) {
   });
 
   // API endpoints for non-
-  app.use('/api/restaurants', restaurantRouter);
-  app.use('/api/users', userRouter);
-  app.use('/api/likes', likesRouter);
+  app.use('/api/restaurants', isAuth, restaurantRouter);
+  app.use('/api/users', isAuth, userRouter);
+  app.use('/api/likes', isAuth, likesRouter);
 };
