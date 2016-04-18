@@ -122,6 +122,10 @@ body {
   line-height: 3em;
 }
 
+.thumbnail {
+  height: 250px;
+}
+
 .caption {
   overflow: hidden;
 }
