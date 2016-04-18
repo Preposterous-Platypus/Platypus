@@ -20,7 +20,7 @@
  <div class="row">
  <div class="col-lg-3 col-sm-6 col-md-3" data-ng-repeat="restaurant in data.restaurants | filter:feedFilter | orderBy: feedOrder">
    <div class="thumbnail">
-         <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">
+         <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}" class="img-rounded">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
            <div class="row category-holder">
