@@ -23,10 +23,17 @@
          <img ng-src="{{restaurant.image_url}}" alt="{{restaurant.name}}">
          <div class="caption">
            <span class="thumbnail-title">{{restaurant.name}}</span>
-           <a role="button" class="btn btn-default" ng-class="{'btn-primary' : data.likes[restaurant._id]}" ng-click="updateLikes(restaurant._id)">
-           <span class="glyphicon glyphicon-thumbs-up"></span>
-           {{restaurant.likes}}
-           </a>
+           <div class="row category-holder">
+             <span class="glyphicon glyphicon-tag"></span> 
+             <span ng-repeat="category in restaurant.categories">
+             <span ng-hide="category === restaurant.categories[0]">, </span>{{category}}</span>
+           </div>
+           <div class="row">
+             <a role="button" class="btn btn-default" ng-class="{'btn-primary' : data.likes[restaurant._id]}" ng-click="updateLikes(restaurant._id)">
+             <span class="glyphicon glyphicon-thumbs-up"></span>
+             {{restaurant.likes}}
+             </a>
+           </div>
          </div>
        </div>
        </div>

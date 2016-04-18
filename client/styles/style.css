@@ -22,7 +22,9 @@ body {
   background-size: contain;
 }
 
-
+address {
+  margin-bottom: 10px;
+}
 
 .dropdown {
   float: right;
@@ -130,12 +132,23 @@ body {
   overflow: hidden;
 }
 
+.caption .row {
+  margin: 0;
+}
+
+.category-holder {
+  height: 40px;
+  margin: 10px 0 10px 0!important;
+  overflow: hidden;
+}
+
 .caption .thumbnail-title {
   font-weight: 800;
   text-align: left;
   height: 100%;
   line-height: 100%;
 }
+
 
 .caption .btn {
   float: right;
