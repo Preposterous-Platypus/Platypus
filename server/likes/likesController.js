@@ -61,7 +61,10 @@ module.exports = {
   },
 
   addOrRemove: function(req, res) {
-    var query = { restaurant: req.body.restaurant };
+    var query = { 
+      restaurant: req.body.restaurant,
+      user: req.session.passport.user
+       };
 
     Likes.findOneAndRemove(query, function(err, response) {
       if (err) {
