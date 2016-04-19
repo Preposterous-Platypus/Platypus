@@ -1,6 +1,5 @@
 body {
   background: #1ca8ff;
-  margin-bottom: 50px !important; /*padding for footer*/
 }
 
 .hide-overflow {
@@ -36,13 +35,18 @@ address {
   margin-top: 2em;
 }
 
-.navbar-fixed-bottom {
+.navbar-bottom {
   /*stuff*/
+  padding: 20px;
 }
 
 #footer-text {
   font-weight: 400;
   font-size: 0.95em;
+}
+
+#footer {
+  text-align: center;
 }
 
 .menu-dropdown {
